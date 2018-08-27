@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import ImageCard from "./components/ImageCard";
 import NavBar from "./components/NavBar";
 // import ScoringInfo from "./components/ScoringInfo";
-import images from "./images.JSON";
+import images from "./images.json";
 import Footer from "./components/Footer";
 
 class App extends Component {
@@ -14,16 +14,17 @@ class App extends Component {
     topScore: 0,
     message: ""
   };
+
   // set state to start game
   loadImages() {
     this.setState({ images: this.shuffleImages(this.state.images) });
   }
- 
+
   imageSelected = id => {
     let guessedCorrectly = false;
     const newImages = this.state.images.map(image => {
       const newImage = { ...image };
-       // verifying user selection
+      // verifying user selection
       if (newImage.id === id) {
         if (!newImage.clicked) {
           //      update imageSelected to true; 
@@ -82,22 +83,23 @@ class App extends Component {
     return images;
   };
 
-// render page
+  // render page
   render() {
+    console.log(this.state.images);
     return (
       <div>
         <NavBar message={this.state.message} currentScore={this.state.currentScore} topScore={this.state.topScore} />
         <Header />
-        <Container>
+        {<Container>
           {this.state.images.map(image => (
             <ImageCard
               key={image.id}
               id={image.id}
-              imageSelected={this.imageSelected}
               image={image.image}
+              imageSelected={this.imageSelected}
             />
           ))}
-        </Container>
+        </Container>}
         <Footer />
       </div>
     );
@@ -106,4 +108,4 @@ class App extends Component {
 
 export default App;
 
- 
+

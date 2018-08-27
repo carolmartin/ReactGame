@@ -5,7 +5,7 @@ import "./NavBar.css";
 
 const NavBar = props => (
 
-  <div class="nav">
+  <div className="nav">
     <ul>
       <li><p> Clicky Game</p></li>
       
