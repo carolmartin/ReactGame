@@ -1,6 +1,6 @@
 import React from "react";
-import "./Navbar.css";
-// import "ScoringInfo" from "./ScoringInfo";
+import "./NavBar.css";
+// import ScoringInfo from "./components/ScoringInfo";
 
 
 const NavBar = props => (
@@ -8,7 +8,8 @@ const NavBar = props => (
   <div class="nav">
     <ul>
       <li><p> Clicky Game</p></li>
-      <li> <p> {props.messageStatus}</p></li>
+      
+      <li> <p> {props.message}</p></li>
       <li> <p>Current Score: {props.currentScore} || Top Score: {props.topScore}</p></li>
     </ul>
 

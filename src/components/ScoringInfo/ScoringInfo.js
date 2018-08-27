@@ -1,26 +1,27 @@
-
-import React from "react";
+import React, { Component } from 'react';
 import "./ScoringInfo.css";
 import "../app.js";
 
-class ScoringInfo extends Component{
+class ScoringInfo extends Component {
 
-state = {messageStatus: ""}
+    state = { messageStatus: "" }
 
 };
 
 //currentScore and topScore will be declared in app.js
 
-componentWillReceiveProps{(currentScore, topScore)}
-const newState;
-if (currentScore === 0 & topScore === 0) {
-    newState.message = "";
+componentDidUpdate(currentScore, topScore); {
+    const newState
 
-}else if (currentScore === 0 & topScore > 0) {
-    newState.message ="incorrect"
-} else {
-    newState.message = "correct"
-}
+    if (currentScore === 0 & topScore === 0) {
+        newState.message = "";
+
+    } else if (currentScore === 0 & topScore > 0) {
+        newState.message = "incorrect"
+    } else {
+        newState.message = "correct"
+    };
+};
 
 renderMessage = () => {
     if (newState.message === "correct") {
@@ -30,7 +31,6 @@ renderMessage = () => {
     } else {
         return "Click an Image to begin"
     }
+};
 
-}
-
-export default Scoringinfo;
+export default ScoringInfo;

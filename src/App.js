@@ -1,66 +1,109 @@
-// import React, { Component } from 'react';
-import React from "react";
+import React, { Component } from 'react';
 import Container from "./components/Container";
 import Header from "./components/Header";
 import ImageCard from "./components/ImageCard";
 import NavBar from "./components/NavBar";
-import ScoringInfo from "./components/ScoringInfo";
+// import ScoringInfo from "./components/ScoringInfo";
 import images from "./images.JSON";
-
-let currentScore;
-let topScore;
+import Footer from "./components/Footer";
 
 class App extends Component {
-  // Setting this.state.images to the images json array
   state = {
-    images
+    images,
+    currentScore: 0,
+    topScore: 0,
+    message: ""
+  };
+  // set state to start game
+  loadImages() {
+    this.setState({ images: this.shuffleImages(this.state.images) });
+  }
+ 
+  imageSelected = id => {
+    let guessedCorrectly = false;
+    const newImages = this.state.images.map(image => {
+      const newImage = { ...image };
+       // verifying user selection
+      if (newImage.id === id) {
+        if (!newImage.clicked) {
+          //      update imageSelected to true; 
+          newImage.clicked = true;
+          // update message to say "you guessed correctly"
+          guessedCorrectly = true;
+        }
+      }
+      return newImage;
+    });
+    guessedCorrectly
+      ? this.correctGuess(newImages)
+      : this.incorrectGuess(newImages);
   };
 
-  updateGame = id => {
-    //
-    // if the image was already selected, update display status "You guessed incorrecty", reset scores to zero; 
-    //      leave top score alone, reset all imagesSelected to false
+  // if image not already selected
+  correctGuess = newImages => {
+    const { currentScore, topScore } = this.state;
+    //       increment current score
+    const newCurrentScore = currentScore + 1;
+    //     If current score > top score, update top score = current score
+    const newTopScore = newCurrentScore > topScore ? newCurrentScore : topScore;
     //      ShuffleImages
+    this.setState({
+      images: this.shuffleImages(newImages),
+      currentScore: newCurrentScore,
+      topScore: newTopScore,
+      message: "Correct Guess"
+    });
+  };
+  // if the image was already selected reset current score to zero; 
+  incorrectGuess = images => {
+    this.setState({
+      //       reset all imagesSelected to false
+      images: this.resetImages(images),
+      currentScore: 0,
+      message: "Incorrect Guess"
+    });
+  };
+  //   reset all imagesSelected to false
+  resetImages = images => {
+    const resetImages = images.map(image => ({ ...image, clicked: false }));
+    return this.shuffleImages(resetImages);
+  };
 
-    // if image not already selected, update display status to "You guessed correctly,"
-    //      update imageSelected to true; , 
-    //       increment current score,
-    //      If current score > top score, update top score = currecnt score
-    //      ShuffleImages
-
-    if (this.state.images.imageSelected === true) {
-
-
-
+  //      ShuffleImages
+  shuffleImages = images => {
+    let i = images.length - 1;
+    while (i > 0) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = images[i];
+      images[i] = images[j];
+      images[j] = temp;
+      i--;
     }
-
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
+    return images;
   };
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
+// render page
   render() {
     return (
-      <Wrapper>
-        <Title>Friends List</Title>
-        {this.state.friends.map(friend => (
-          <FriendCard
-            removeFriend={this.removeFriend}
-            id={friend.id}
-            key={friend.id}
-            name={friend.name}
-            image={friend.image}
-            occupation={friend.occupation}
-            location={friend.location}
-          />
-        ))}
-      </Wrapper>
+      <div>
+        <NavBar message={this.state.message} currentScore={this.state.currentScore} topScore={this.state.topScore} />
+        <Header />
+        <Container>
+          {this.state.images.map(image => (
+            <ImageCard
+              key={image.id}
+              id={image.id}
+              imageSelected={this.imageSelected}
+              image={image.image}
+            />
+          ))}
+        </Container>
+        <Footer />
+      </div>
     );
   }
-}
+};
 
 export default App;
 
-
+ 
