@@ -1,0 +1,33 @@
+.footer {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPSYkpcCx0UYrtcKYDpWrTKl0LEvxNlFIc8VHwpJFYfCOSgJ1e7A");
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.8;
+    width: 100%;
+    font-size: 1rem;
+    font-family: 'Kosugi', sans-serif;
+    height: 15vh; 
+    margin:0;
+    clear: both;
+}
+.content{
+    flex-direction: row;
+    padding-left: 40vw;
+}
+.title {
+    padding-top: 7vh;
+    color: #d9be40;
+    opacity: 1;
+    margin: 0;
+    text-decoration: underline;
+    float: left;
+}
+
+.logo {
+    padding-top: 6vh;
+    padding-left: 2vw;
+    height: 5vh;
+    width: 5vh;
+}

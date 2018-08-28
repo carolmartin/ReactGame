@@ -6,12 +6,12 @@ import "./NavBar.css";
 const NavBar = props => (
 
   <div className="nav">
-    <ul>
-      <li><p> Clicky Game</p></li>
+    
+      <p className="navTitle"> Clicky Game</p>
       
-      <li> <p> {props.message}</p></li>
-      <li> <p>Current Score: {props.currentScore} || Top Score: {props.topScore}</p></li>
-    </ul>
+     <p className="message"> {props.message}</p>
+     <p className="scores">Current Score: {props.currentScore} || Top Score: {props.topScore}</p>
+    
 
   </div>
 );

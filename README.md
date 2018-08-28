@@ -1,3 +1,16 @@
+#Clicky Game
+
+This is a memory game using React.
+
+A user will be asked to click each Spongebob character only once, and will tally the highest score before an incorrect guess is made.
+Pictures are shuffled after each picture is guessed. 
+
+This project uses React.
+
+Demo:
+![](Demo.gif)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

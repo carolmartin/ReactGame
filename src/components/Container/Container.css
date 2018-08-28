@@ -1,0 +1,14 @@
+.container{
+ /* background: url("https://images.complex.com/complex/image/upload/c_limit,w_680/fl_lossy,pg_1,q_auto/krusty-krab-viacom_eb1tmr.jpg") no-repeat center center fixed;  */
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        margin:0;
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-rows: 25% 25% 25%;
+        justify-items: center;
+        background-color: lightblue;
+
+}

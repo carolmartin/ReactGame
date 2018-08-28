@@ -3,8 +3,9 @@ import "./Footer.css";
 
 const Footer = () => (
   <footer className="footer">
-    <div className="bottom">
-      Clicky Game! <img alt="react" src="assets/images/react.svg" />
+    <div className="content">
+    <p className="title"> Clicky Game! </p>
+     <img alt="logo" src="http://www.pitt.edu/~trd42/Images/krabLogo.png" className="logo"/>
     </div>
   </footer>
 );
